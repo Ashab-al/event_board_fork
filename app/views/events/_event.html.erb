@@ -1,7 +1,29 @@
-<div id="<%= dom_id event %>">
-  <% if action_name != "show" %>
-    <%= link_to "Show this event", event, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this event', edit_event_path(event), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+<div class="w-full lg:max-w-full lg:flex">
+  <%= content_tag "div", "",
+                  class: "h-64 lg:h-auto lg:w-64 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden",
+                  style: "background: url(#{asset_path('event.jpg')}) center center; background-size: cover",
+                  title: event.title
+  %>
+  <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+  <div class="mb-4">
+    <p class="text-sm text-gray-600 flex items-center">
+      <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
+      </svg>
+      only for authorized users
+    </p>
+    <div class="text-gray-900 font-bold text-xl mb-2"><%= event.title %></div>
+    <p class="text-gray-700 text-base"><%= event.description %></p>
+  </div>
+  <a href="<%= user_path(event.user)%>" class="flex items-center">
+    <img class="w-10 h-10 rounded-full mr-4" src="<%= asset_path('user.jpg') %>">
+    <div class="text-sm">
+      <p class="text-gray-900 leading-none"><%= event.user.name %></p>
+      <p class="text-gray-600"><%= event.user.email %></p>
+    </div>
+  </a>
+  <%= link_to 'Join', event, class: 'transition duration-300 text-center mt-4 bg-indigo-500 hover:bg-indigo-400 text-white font-bold py-2 px-4 border-b-4 border-indigo-700 hover:border-indigo-500 rounded' %>
+  </div>
 </div>
+
+

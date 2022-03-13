@@ -1,15 +1,58 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
+<!-- component -->
+<section class="w-full text-indigo-200 body-font p-5 bg-indigo-900">
+  <Link to="coursedet">
+  <div class="mx-auto flex px-5 md:flex-row flex-col jobcard">
+    <div
+      class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center">
 
-    <%= render @event %>
+      <figure class="visible">
 
-    <%= link_to 'Edit this event', edit_event_path(@event), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this event', event_path(@event), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+        <div class="">
+
+          <div class="pt-5 px-2 sm:px-6">
+            <span
+              class="inline-flex items-center py-1 px-2 rounded-full bg-green-600 text-white  text-xs font-bold tracking-widest mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+                <%= @event.datetime %>
+              </span>
+            <h1 class="title-font sm:text-4xl mb-1 text-3x font-medium text-gray-100">
+              <%= @event.title %>
+            </h1>
+                        <p class="flex mb-4" >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+              <%= @event.address %>
+            </p>
+            <p class="text-indigo-200 text-base pb-6">
+              <%= @event.description %>
+            </p>
+            <div class="flex items-center justify-between">
+              <a href="<%= user_path(@user) %>" class="flex items-center pb-12">
+                <div class="h-12 w-12">
+                  <img src="<%= asset_path('user.jpg') %>" alt
+                    class="h-full w-full object-cover overflow-hidden rounded-full" />
+                </div>
+                <p class="text-indigo-200 font-bold ml-3">
+                  <%= @user.name %>
+                  <br>
+                  <span class="text-indigo-200 text-base font-light"><%= @user.email %></span>
+                </p>
+              </a>
+            </div>
+            <div class="">
+              <%= link_to "Edit event", edit_event_path(@event), class: 'transition cursor-pointer duration-300 text-center mt-4 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded' %>
+            </div>
+          </div>
+        </div>
+      </figure>
+
     </div>
-    <%= link_to 'Back to events', events_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 sm:block hidden">
+      <img class="object-cover object-center rounded" alt="hero" src="<%= asset_path('event.jpg') %>" />
+    </div>
   </div>
-</div>
+</section>

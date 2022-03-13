@@ -1,17 +1,23 @@
-<%= form_with(model: event, class: "contents") do |form| %>
-  <% if event.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
-      <ul>
-        <% event.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+<%= form_with(model: event, class: "mt-10") do |f| %>
+  <div class="mb-6">
+    <%= f.label :title, class: 'block mb-2 text-sm font-medium text-white-900 dark:text-white-300' %>
+    <%= f.text_field :title, class: 'shadow-sm bg-white-50 border border-white-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-white-600 dark:placeholder-white-400 dark:text-gray dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light' %>
   </div>
+
+  <div class="mb-6">
+    <%= f.label :address, class: 'block mb-2 text-sm font-medium text-white-900 dark:text-white-300' %>
+    <%= f.text_field :address, class: 'shadow-sm bg-white-50 border border-white-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-white-600 dark:placeholder-white-400 dark:text-gray dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light' %>
+  </div>
+
+  <div class="mb-6">
+    <%= f.label :datetime, class: 'block mb-2 text-sm font-medium text-white-900 dark:text-white-300' %>
+    <%= f.datetime_field :title, class: 'shadow-sm bg-white-50 border border-white-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-white-600 dark:placeholder-white-400 dark:text-gray dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light' %>
+  </div>
+
+  <div class="mb-6">
+    <%= f.label :description, class: 'block mb-2 text-sm font-medium text-white-900 dark:text-white-300' %>
+    <%= f.text_area :description, class: 'shadow-sm bg-white-50 border border-white-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-white-600 dark:placeholder-white-400 dark:text-gray dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light' %>
+  </div>
+
+  <%= f.submit class: "transition cursor-pointer duration-300 text-center mt-4 bg-indigo-500 hover:bg-indigo-400 text-white font-bold py-2 px-4 border-b-4 border-indigo-700 hover:border-indigo-500 rounded" %>
 <% end %>
