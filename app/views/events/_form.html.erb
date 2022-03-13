@@ -1,4 +1,6 @@
-<%= form_with(model: event, class: "mt-10") do |f| %>
+<%= render partial: "partials/form_errors", locals: { model: event } %>
+
+<%= form_for(event, html: { class: "mt-10"}) do |f| %>
   <div class="mb-6">
     <%= f.label :title, class: 'block mb-2 text-sm font-medium text-white-900 dark:text-white-300' %>
     <%= f.text_field :title, class: 'shadow-sm bg-white-50 border border-white-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-white-600 dark:placeholder-white-400 dark:text-gray dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light' %>
@@ -11,7 +13,7 @@
 
   <div class="mb-6">
     <%= f.label :datetime, class: 'block mb-2 text-sm font-medium text-white-900 dark:text-white-300' %>
-    <%= f.datetime_field :title, class: 'shadow-sm bg-white-50 border border-white-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-white-600 dark:placeholder-white-400 dark:text-gray dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light' %>
+    <%= f.datetime_select :datetime, class: 'shadow-sm bg-white-50 border border-white-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-white-600 dark:placeholder-white-400 dark:text-gray dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light' %>
   </div>
 
   <div class="mb-6">

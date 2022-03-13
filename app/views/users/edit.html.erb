@@ -1,4 +1,4 @@
-  <%= render partial: "partials/form_errors", locals: { model: @user } %>
+<%= render partial: "partials/form_errors", locals: { model: @user } %>
 
 <%= form_for(@user, html: { multipart: true, class: 'items-start max-w-6xl flex h-auto lg:h-screen flex-wrap mx-auto lg:my-4' }) do |f| %>
     <div id="profile" class="mt-20 lg:mt-0 w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">

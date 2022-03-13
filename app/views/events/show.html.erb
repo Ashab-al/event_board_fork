@@ -43,9 +43,15 @@
                 </p>
               </a>
             </div>
-            <div class="">
-              <%= link_to "Edit event", edit_event_path(@event), class: 'transition cursor-pointer duration-300 text-center mt-4 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded' %>
-            </div>
+            <% if current_user_can_edit_event?(@event) %>
+              <div class="">
+                <%= link_to "Edit event", edit_event_path(@event), class: 'transition cursor-pointer duration-300 text-center mt-4 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded' %>
+              </div>
+            <% else %>
+              <div class="">
+                <%= link_to "Back to events", root_path, class: 'transition cursor-pointer duration-300 text-center mt-4 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded' %>
+              </div>
+            <% end %>
           </div>
         </div>
       </figure>
