@@ -9,6 +9,7 @@ gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 gem 'bootsnap', '>= 1.4.2', require: false
+gem "devise", "~> 4.8"
 gem "tailwindcss-rails", "~> 2.0"
 
 group :development, :test do
@@ -18,7 +19,3 @@ end
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
 end
-
-
-
-gem "devise", "~> 4.8"
