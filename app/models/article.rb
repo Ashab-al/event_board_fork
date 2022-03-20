@@ -3,6 +3,8 @@ class Article < ApplicationRecord
 
   belongs_to :user
 
+  has_rich_text :body
+
   validates :title, :body, :user, presence: true 
 
   validates :title,   length: { minimum: 10, maximum: 255 }

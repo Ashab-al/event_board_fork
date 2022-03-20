@@ -3,7 +3,7 @@
   <div class="px-6 py-4">
     <div class="font-bold text-xl mb-2"><%= article.title %></div>
     <p class="text-gray-700 text-base mb-4 ">
-      <%= truncate(article.body , :length => 100, :separator => '...') %>
+      <%= truncate(strip_tags(article.body.to_s) , :length => 100, :separator => '...') %>
     </p>
   <%= link_to "Read more", article, 
                       class: 'transition duration-300 text-center mt-4 bg-indigo-500 
