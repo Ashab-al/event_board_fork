@@ -1,0 +1,12 @@
+<div class="w-full">
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Articles</h1>
+    <%= link_to 'New article', new_article_path, class: "transition duration-300 text-center mt-4 bg-indigo-500 
+                              hover:bg-indigo-400 text-white font-bold py-2 px-4 border-b-4 
+                              border-indigo-700 hover:border-indigo-500 rounded" %>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-2">
+    <%= render @articles %>
+  </div>
+</div>

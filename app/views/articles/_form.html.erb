@@ -1,0 +1,22 @@
+<%= form_for(article, html: { class: "contents"}) do |form| %>
+  <%= render partial: "partials/form_errors", locals: { model: article } %>
+
+  <div class="my-5">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :body %>
+    <%= form.text_area :body, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :picture %>
+    <%= form.text_field :picture, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+    <%= form.submit class: "cursor-pointer transition duration-300 text-center mt-4 bg-indigo-500 
+                              hover:bg-indigo-400 text-white font-bold py-3 px-4 border-b-4 
+                              border-indigo-700 hover:border-indigo-500 rounded" %>
+<% end %>

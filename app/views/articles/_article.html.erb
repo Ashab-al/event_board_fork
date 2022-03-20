@@ -1,0 +1,13 @@
+<div class="max-w-sm mx-auto rounded overflow-hidden shadow-lg">
+  <img class="w-full h-60" src="<%= article.picture %>" alt="Sunset in the mountains">
+  <div class="px-6 py-4">
+    <div class="font-bold text-xl mb-2"><%= article.title %></div>
+    <p class="text-gray-700 text-base mb-4 ">
+      <%= truncate(article.body , :length => 100, :separator => '...') %>
+    </p>
+  <%= link_to "Read more", article, 
+                      class: 'transition duration-300 text-center mt-4 bg-indigo-500 
+                              hover:bg-indigo-400 text-white font-bold py-2 px-4 border-b-4 
+                              border-indigo-700 hover:border-indigo-500 rounded' %>
+  </div>
+</div>

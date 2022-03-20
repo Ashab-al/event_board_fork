@@ -1,4 +1,9 @@
 module.exports = {
+  content: [
+    './app/helpers/**/*.rb',
+    './app/javascript/**/*.js',
+    './app/views/**/*',
+  ],
   plugins: [
     require('postcss-import'),
     require('postcss-flexbugs-fixes'),

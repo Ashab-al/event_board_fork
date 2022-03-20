@@ -34,8 +34,20 @@
 			This user did not created events...
 		<% end %>
 	</p>
-
   <div class="grid gap-4 grid-rows-2 mt-10 grid-cols-1 sm:grid-cols-2">
     <%= render partial: "events/event", collection: @user.events %>
+  </div>
+</section>
+
+<section id="user_articles_owner" class="w-full mt-5 lg:text-center">
+	<p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+		<% if @user.articles.present? %>
+			User articles owner
+		<% else %>
+			This user did not created articles...
+		<% end %>
+	</p>
+  <div class="grid gap-4 grid-rows-2 mt-10 grid-cols-1 sm:grid-cols-2">
+    <%= render partial: "articles/article", collection: @user.articles %>
   </div>
 </section>
