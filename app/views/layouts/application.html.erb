@@ -18,35 +18,44 @@
 						<div>
 							<a href="<%= root_path %>" class="flex items-center py-4 px-2">
 								<img src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Logo" class="h-8 w-8 mr-2">
-								<span class="font-semibold text-gray-500 text-lg">Event board</span>
+								<span class="font-semibold text-gray-500 text-lg"><%= t('title') %></span>
 							</a>
 						</div>
 						<!-- Primary Navbar items -->
 						<div class="hidden md:flex items-center space-x-1">
-							<a href="" class="py-2 px-2 text-indigo-500 border-b-4 border-indigo-500 font-semibold ">Home</a>
-							<a href="" class="py-4 px-2 text-gray-500 font-semibold hover:text-indigo-500 transition duration-300">Services</a>
-							<a href="" class="py-4 px-2 text-gray-500 font-semibold hover:text-indigo-500 transition duration-300">About</a>
-							<a href="" class="py-4 px-2 text-gray-500 font-semibold hover:text-indigo-500 transition duration-300">Contact Us</a>
+							<%= link_to t('navbar.events'), events_path, class: 'py-4 px-2 text-gray-500 font-semibold hover:text-indigo-500 transition duration-300' %>
+							<%= link_to t('navbar.articles'), articles_path, class: 'py-4 px-2 text-gray-500 font-semibold hover:text-indigo-500 transition duration-300' %>
 						</div>
 					</div>
 					<!-- Secondary Navbar items -->
 					<div class="hidden md:flex items-center space-x-3 ">
+						<p class="">
+							<%= link_to_unless I18n.locale == :en, t('multilingual.english'), {locale: :en}, {class: 'py-4 px-2 text-gray-500 font-semibold hover:text-indigo-500 transition duration-300'} do |name| 
+								content_tag('span', name, class: 'py-2 px-2 text-indigo-500 border-indigo-500 font-semibold ')
+								end
+							%>
+							|
+							<%= link_to_unless I18n.locale == :ru, t('multilingual.russian'), {locale: :ru}, {class: 'py-4 px-2 text-gray-500 font-semibold hover:text-indigo-500 transition duration-300'} do |name|
+									content_tag('span', name, class: 'py-2 px-2 text-indigo-500 border-indigo-500 font-semibold ')
+								end
+							%>
+						</p>
 						<% if user_signed_in? %>
-							<%= link_to "Profile", current_user, 
-																		class: 'transition duration-300 text-center mt-4 bg-indigo-500 
+							<%= link_to t('buttons.profile'), current_user, 
+																		class: 'transition duration-300 text-center bg-indigo-500 
 																						hover:bg-indigo-400 text-white font-bold py-1 px-4 border-b-4 
 																						border-indigo-700 hover:border-indigo-500 rounded' %>
-							<%= link_to "Exit", destroy_user_session_path, :method => :delete, 
-																		class: 'transition duration-300 text-center mt-4 bg-red-500 
+							<%= link_to t('buttons.exit'), destroy_user_session_path, :method => :delete, 
+																		class: 'transition duration-300 text-center bg-red-500 
 																						hover:bg-red-400 text-white font-bold py-1 px-4 border-b-4 
 																						border-red-700 hover:border-red-500 rounded' %>
 						<% else %>
-							<%= link_to "Log in", new_user_session_path, 
-																		class: 'transition duration-300 text-center mt-4 hover:bg-indigo-500 
+							<%= link_to t('buttons.log_in'), new_user_session_path, 
+																		class: 'transition duration-300 text-center hover:bg-indigo-500 
 																		 				text font-bold py-1 px-4 border-b-4 hover:border-indigo-700 
 																						hover:text-white rounded' %>
-							<%= link_to "Sign Up", new_user_registration_path, 
-																		class: 'transition duration-300 text-center mt-4 bg-indigo-500 
+							<%= link_to t('buttons.sign_up'), new_user_registration_path, 
+																		class: 'transition duration-300 text-center bg-indigo-500 
 																						hover:bg-indigo-400 text-white font-bold py-1 px-4 border-b-4 
 																						border-indigo-700 hover:border-indigo-500 rounded' %>
 						<% end %>
@@ -72,10 +81,19 @@
 			<!-- mobile menu -->
 			<div class="hidden mobile-menu">
 				<ul class="">
-					<li class="active"><a href="index.html" class="block text-sm px-2 py-4 text-white bg-indigo-500 font-semibold">Home</a></li>
-					<li><a href="#services" class="block text-sm px-2 py-4 hover:bg-indigo-500 transition duration-300">Services</a></li>
-					<li><a href="#about" class="block text-sm px-2 py-4 hover:bg-indigo-500 transition duration-300">About</a></li>
-					<li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-indigo-500 transition duration-300">Contact Us</a></li>
+					<%= link_to t('navbar.events'), events_path, class: 'block text-sm px-2 py-4 hover:bg-indigo-500 transition duration-300' %>
+					<%= link_to t('navbar.articles'), articles_path, class: 'block text-sm px-2 py-4 hover:bg-indigo-500 transition duration-300' %>
+					<% if user_signed_in? %>
+						<%= link_to t('buttons.profile'), current_user, 
+																	class: 'block text-sm px-2 py-4 hover:bg-indigo-500 transition duration-300' %>
+						<%= link_to t('buttons.exit'), destroy_user_session_path, :method => :delete, 
+																	class: 'block text-sm px-2 py-4 hover:bg-indigo-500 transition duration-300' %>
+					<% else %>
+						<%= link_to t('buttons.log_in'), new_user_session_path, 
+																	class: 'block text-sm px-2 py-4 hover:bg-indigo-500 transition duration-300' %>
+						<%= link_to t('buttons.sign_up'), new_user_registration_path, 
+																	class: 'block text-sm px-2 py-4 hover:bg-indigo-500 transition duration-300' %>
+					<% end %>
 				</ul>
 			</div>
 			<script>

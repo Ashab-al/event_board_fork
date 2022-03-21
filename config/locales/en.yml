@@ -1,33 +1,36 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  title: 'Event board'
+  navbar:
+    articles: 'Articles'
+    events: 'Events'
+  multilingual:
+    russian: 'Russian'
+    english: 'English'
+  buttons: 
+    sign_up: 'Sign Up'
+    log_in: 'Log in'
+    profile: 'Profile'
+    exit: 'Exit'
+    new_event: 'New Event'
+    new_article: 'New Article'
+    join_to_event: 'Join'
+    read_more: 'Read more'
+  profile:
+    edit_button: 'Edit profile'
+    change_pass_button: 'Change my password'
+    events_title: 'User events'
+    events_not_exist: 'This user did not created events...'
+    articles_title: 'User articles'
+    articles_not_exist: 'This user did not created articles...'
+  event:
+    create_button: 'Create Event'
+    edit_button: 'Edit Event'
+    index_events_button: 'Back to events'
+    edit_save_button: 'Save changes'
+    new_page_title: 'New event'
+  article:
+    edit_button: 'Edit this article'
+    destroy_button: 'Destroy this article'
+    new_page_title: 'New article'
+    index_button: 'Back to articles'
+    create_button: 'Save changes'

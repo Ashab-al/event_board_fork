@@ -9,13 +9,13 @@
 				<%= @article.body %>
 			</p>
       <div class="flex flex-wrap content-around">
-        <%= link_to 'Edit this article', edit_article_path(@article), class: "cursor-pointer transition duration-300 text-center mt-4 bg-indigo-500 
+        <%= link_to t('article.edit_button'), edit_article_path(@article), class: "cursor-pointer transition duration-300 text-center mt-4 bg-indigo-500 
                                   hover:bg-indigo-400 text-white font-bold py-2 px-4 border-b-4 
                                   border-indigo-700 hover:border-indigo-500 rounded mr-2" %>
-        <%= link_to 'Destroy this article', article_path(@article), method: :delete, class: "cursor-pointer transition duration-300 text-center mt-4 bg-indigo-500 
+        <%= link_to t('article.destroy_button'), article_path(@article), method: :delete, class: "cursor-pointer transition duration-300 text-center mt-4 bg-indigo-500 
                                 hover:bg-indigo-400 text-white font-bold py-2 px-4 border-b-4 
                                 border-indigo-700 hover:border-indigo-500 rounded mr-2" %>
-        <%= link_to 'Back to articles', articles_path, class: "cursor-pointer transition duration-300 text-center mt-4 bg-indigo-500 
+        <%= link_to t('article.index_button'), articles_path, class: "cursor-pointer transition duration-300 text-center mt-4 bg-indigo-500 
                                   hover:bg-indigo-400 text-white font-bold py-2 px-4 border-b-4 
                                   border-indigo-700 hover:border-indigo-500 rounded mr-2" %>
       </div>

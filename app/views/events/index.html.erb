@@ -1,7 +1,7 @@
 <div class="w-full">
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Events</h1>
-    <%= link_to 'New event', new_event_path, class: "transition cursor-pointer duration-300 text-center mt-4 bg-indigo-500 hover:bg-indigo-400 text-white font-bold py-2 px-4 border-b-4 border-indigo-700 hover:border-indigo-500 rounded" %>
+    <h1 class="font-bold text-4xl"><%= t('navbar.events') %></h1>
+    <%= link_to t('buttons.new_event'), new_event_path, class: "transition cursor-pointer duration-300 text-center mt-4 bg-indigo-500 hover:bg-indigo-400 text-white font-bold py-2 px-4 border-b-4 border-indigo-700 hover:border-indigo-500 rounded" %>
   </div>
   <div class="grid gap-4 grid-rows-2 mt-10 grid-cols-1 sm:grid-cols-2">
     <%= render @events %>

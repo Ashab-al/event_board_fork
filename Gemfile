@@ -10,6 +10,7 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem "devise", "~> 4.8"
+gem 'devise-i18n'
 gem "tailwindcss-rails", "~> 2.0"
 
 group :development, :test do
