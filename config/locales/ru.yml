@@ -34,6 +34,8 @@ ru:
     new_page_title: 'Создание статьи'
     index_button: 'Все статьи'
     create_button: 'Сохранить изменения'
+    author: 'Автор'
+    event: 'К событию'
   errors:
     format: "%{attribute} %{message}"
 
@@ -101,6 +103,7 @@ ru:
       article:
         title: 'Название'
         body: 'Текст статьи'
+        event: 'Событие'
         picture: 'Обложка'
   date:
     formats:

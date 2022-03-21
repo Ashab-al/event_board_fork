@@ -9,11 +9,14 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1
   def show
+    @user = @article.user
+    @event = @article.event
   end
 
   # GET /articles/new
   def new
     @article = current_user.articles.build
+    @events = Event.all
   end
 
   # GET /articles/1/edit
@@ -54,6 +57,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def article_params
-      params.require(:article).permit(:title, :body, :picture)
+      params.require(:article).permit(:title, :body, :picture, :event_id)
     end
 end

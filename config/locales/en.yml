@@ -34,3 +34,5 @@ en:
     new_page_title: 'New article'
     index_button: 'Back to articles'
     create_button: 'Save changes'
+    author: 'Author'
+    event: 'For event'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_20_093211) do
+ActiveRecord::Schema.define(version: 2022_03_21_104536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 2022_03_20_093211) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_articles_on_event_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
@@ -82,6 +84,7 @@ ActiveRecord::Schema.define(version: 2022_03_20_093211) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "articles", "events"
   add_foreign_key "articles", "users"
   add_foreign_key "events", "users"
 end
