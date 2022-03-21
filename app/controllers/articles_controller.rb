@@ -1,61 +1,60 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:show]
+  before_action :set_current_user_article, only: [:edit, :update, :destroy]
 
-  # GET /articles
   def index
     @articles = Article.all
   end
 
-  # GET /articles/1
   def show
     @user = @article.user
     @event = @article.event
   end
 
-  # GET /articles/new
   def new
     @article = current_user.articles.build
-    @events = Event.all
   end
 
-  # GET /articles/1/edit
   def edit
   end
 
-  # POST /articles
   def create
     @article = current_user.articles.build(article_params)
 
     if @article.save
-      redirect_to @article, notice: 'Article was successfully created.'
+      redirect_to @article, notice: I18n.t('controllers.articles.created')
     else
       render :new
     end
   end
 
-  # PATCH/PUT /articles/1
   def update
     if @article.update(article_params)
-      redirect_to @article, notice: 'Article was successfully updated.'
+      redirect_to @article, notice: I18n.t('controllers.articles.updated')
     else
       render :edit
     end
   end
 
-  # DELETE /articles/1
   def destroy
     @article.destroy
-    redirect_to articles_url, notice: 'Article was successfully destroyed.'
+    redirect_to articles_url, notice: I18n.t('controllers.articles.destroyed')
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+    def set_current_user_article
+      begin
+        @article = current_user.articles.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_to user_path(current_user), notice: I18n.t('controllers.articles.cant_change')
+      end
+    end
+
     def article_params
       params.require(:article).permit(:title, :body, :picture, :event_id)
     end

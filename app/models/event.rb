@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :user
-  has_many :articles
+  has_many :articles, dependent: :destroy
 
   validates :title, :user, :address, :datetime, presence: true
   
