@@ -39,6 +39,7 @@ en:
     create_button: 'Save changes'
     author: 'Author'
     event: 'For event'
+    edit_title: 'Edit title'
   controllers:
     events:
       created: 'Event was successfully created.'

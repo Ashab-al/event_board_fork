@@ -39,6 +39,7 @@ ru:
     create_button: 'Сохранить изменения'
     author: 'Автор'
     event: 'К событию'
+    edit_title: 'Редактирование статьи'
   errors:
     format: "%{attribute} %{message}"
 
@@ -95,14 +96,15 @@ ru:
       destroyed: 'Событие было успешно удалено!'
       cant_change: 'Вы не можете удалять или редактировать данное событие'
     articles:
-      created: 'Статья была успешно создано!'
-      updated: 'Статья была успешно обновлено!'
-      destroyed: 'Статья была успешно удалено!'
+      created: 'Статья была успешно создана!'
+      updated: 'Статья была успешно обновлена!'
+      destroyed: 'Статья была успешно удалена!'
       cant_change: 'Вы не можете удалять или редактировать данную статью'
   activerecord:
     models:
       user: 'Пользователь'
       event: 'Событие'
+      article: 'Статья'
     attributes:
       user:
         email: 'Email'
