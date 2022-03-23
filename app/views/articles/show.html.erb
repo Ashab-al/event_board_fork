@@ -1,44 +1,62 @@
 <div class="container w-full md:max-w-3xl mx-auto py-10">
-  <%= image_tag @article.picture %>
-		<div class="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal" style="font-family:Georgia,serif;">
-			<div class="font-sans">
-        <h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl"><%= @article.title %></h1>
-        <p class="text-sm md:text-base font-normal text-gray-600"><%= l @article.created_at, format: :short %></p>
-			</div>
-      <div class="flex">
-        <div class="">
-          <h2 class="font-bold font-sans mt-2 text-sm"><%= t('article.author') %>:</h2>
-          <a href="<%= user_path(@user)%>" class="flex items-center mr-2 sm:mr-6">
-            <%= image_tag user_avatar(@user), class: "w-10 h-10 rounded-full mr-4" %>
-            <div class="text-sm">
-              <p class="text-gray-900 leading-none"><%= @user.name %></p>
-              <p class="text-gray-600"><%= @user.email %></p>
-            </div>
-          </a>
-        </div>
-        <div class="">
-          <h2 class="font-bold font-sans mt-2 text-sm"><%= t('article.event') %>:</h2>
-          <a href="<%= event_path(@event) %>" class="flex items-center">
-            <%= image_tag event_picture(@event), class: "w-10 h-10 rounded-full mr-4" %>
-            <div class="text-sm">
-              <p class="text-gray-900 leading-none"><%= @event.title %></p>
-            </div>
-          </a>
-        </div>
-      </div>
-			<p class="py-6">
-				<%= @article.body %>
-			</p>
-      <div class="flex flex-wrap content-around">
-        <%= link_to t('article.edit_button'), edit_article_path(@article), class: "cursor-pointer transition duration-300 text-center mt-4 bg-indigo-500 
+  <% if @article.user == current_user %>
+    <div class="flex flex-wrap content-around mb-4">
+      <%= link_to t('article.edit_button'), edit_article_path(@article), class: "cursor-pointer transition duration-300 text-center mt-4 bg-indigo-500 
                                   hover:bg-indigo-400 text-white font-bold py-2 px-4 border-b-4 
                                   border-indigo-700 hover:border-indigo-500 rounded mr-2" %>
-        <%= link_to t('article.destroy_button'), article_path(@article), method: :delete, class: "cursor-pointer transition duration-300 text-center mt-4 bg-indigo-500 
+      <%= link_to t('article.destroy_button'), article_path(@article), method: :delete, class: "cursor-pointer transition duration-300 text-center mt-4 bg-indigo-500 
                                 hover:bg-indigo-400 text-white font-bold py-2 px-4 border-b-4 
                                 border-indigo-700 hover:border-indigo-500 rounded mr-2" %>
-        <%= link_to t('article.index_button'), articles_path, class: "cursor-pointer transition duration-300 text-center mt-4 bg-indigo-500 
-                                  hover:bg-indigo-400 text-white font-bold py-2 px-4 border-b-4 
-                                  border-indigo-700 hover:border-indigo-500 rounded mr-2" %>
+    </div>
+  <% end%>
+  <%= image_tag @article.picture %>
+  <div class="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal" style="font-family:Georgia,serif;">
+    <div class="font-sans">
+      <h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl"><%= @article.title %>
+      </h1>
+      <p class="text-sm md:text-base font-normal text-gray-600"><%= l @article.created_at, format: :short %></p>
+    </div>
+    <div class="flex">
+      <div class="">
+        <h2 class="font-bold font-sans mt-2 text-sm"><%= t('article.author') %>:</h2>
+        <a href="<%= user_path(@user)%>" class="flex items-center mr-2 sm:mr-6">
+          <%= image_tag user_avatar(@user), class: "w-10 h-10 rounded-full mr-4" %>
+          <div class="text-sm">
+            <p class="text-gray-900 leading-none"><%= @user.name %></p>
+            <p class="text-gray-600"><%= @user.email %></p>
+          </div>
+        </a>
+      </div>
+      <div class="">
+        <h2 class="font-bold font-sans mt-2 text-sm"><%= t('article.event') %>:</h2>
+        <a href="<%= event_path(@event) %>" class="flex items-center">
+          <%= image_tag event_picture(@event), class: "w-10 h-10 rounded-full mr-4" %>
+          <div class="text-sm">
+            <p class="text-gray-900 leading-none"><%= @event.title %></p>
+          </div>
+        </a>
       </div>
     </div>
+    <p class="py-6">
+      <%= @article.body %>
+    </p>
+    <div class="mt-6">
+      <%= link_to t('article.index_button'), articles_path, class: "cursor-pointer transition duration-300 text-center bg-indigo-500 
+                                hover:bg-indigo-400 text-white font-bold py-2 px-4 border-b-4 
+                                border-indigo-700 hover:border-indigo-500 rounded mr-2" %>
+    </div>
+
+<div class="text-sm pt-4 flex flex-col justify-between">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8" id="chat-container">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8" >
+      <%= render partial: "comments/comment", collection: @article.comments %>
+    </div>
+  </div>
+</div>
+    
+    <div class="flex items-center justify-center shadow-lg mt-4 mb-4 max-w-lg">
+      <%= render "comments/form" %>
+    </div>
+  </div>
+</div>
 </div>

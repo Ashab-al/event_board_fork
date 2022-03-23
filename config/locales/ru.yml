@@ -100,11 +100,15 @@ ru:
       updated: 'Статья была успешно обновлена!'
       destroyed: 'Статья была успешно удалена!'
       cant_change: 'Вы не можете удалять или редактировать данную статью'
-  activerecord:
+    comments:
+      created: 'Комменатрий успешно создан!'
+      destroyed: 'Комментарий успешно удалён!'
+      error: 'Ошибка с комментированием'
     models:
       user: 'Пользователь'
       event: 'Событие'
       article: 'Статья'
+      comment: 'Комментарий'
     attributes:
       user:
         email: 'Email'
@@ -121,6 +125,9 @@ ru:
         body: 'Текст статьи'
         event: 'Событие'
         picture: 'Обложка'
+      comment:
+        body: 'Текст'
+        user_name: 'Имя'
   date:
     formats:
       # Форматы указываются в виде, поддерживаемом strftime.

@@ -3,6 +3,7 @@ class Article < ApplicationRecord
 
   belongs_to :user
   belongs_to :event
+  has_many :comments
 
   has_rich_text :body
 

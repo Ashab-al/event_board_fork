@@ -38,8 +38,13 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article.destroy
-    redirect_to articles_url, notice: I18n.t('controllers.articles.destroyed')
+    message = {notice: I18n.t('controllers.articles.destroyed')}
+
+    if current_user_can_edit(@article)
+      @article.destroy!
+    else
+      message = {alert: I18n.t('controllers.articles.error')}
+    end
   end
 
   private

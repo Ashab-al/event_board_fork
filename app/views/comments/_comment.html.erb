@@ -1,0 +1,23 @@
+<div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg py-4 pl-2 mb-4">
+    <div class="flex flex-row">
+    <a href="#" class="basis-1/12">
+    <% if comment.user.present? %>
+        <%= image_tag user_avatar(comment.user), class: "w-10 h-10 rounded-full" %>
+    <% else %>
+        <%= image_tag user_avatar(comment.user), class: "w-10 h-10 rounded-full" %>
+    <% end %>
+    </a>
+    <div class="basis-2/12">
+        <% if comment.user.present? %>
+            user on our site!
+        <% end %>
+        <div class="">
+            <div class="">
+                <%= comment.user_name %>
+            </div>
+            <%= l comment.created_at, format: :short %>
+        </div>
+    </div>
+    <div class="basis-9/12"><%= comment.body %></div>
+    </div>
+</div>

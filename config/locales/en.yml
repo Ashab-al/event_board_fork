@@ -51,3 +51,7 @@ en:
       updated: 'Article was successfully updated.'
       destroyed: 'Article was successfully destroyed.'
       cant_change: 'You can`t change this article'
+    comments:
+      created: 'Comment was successfully created.'
+      destroyed: 'Comment was successfully destroyed.'
+      error: 'Error with comment'
