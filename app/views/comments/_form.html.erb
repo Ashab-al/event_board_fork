@@ -1,27 +1,35 @@
-<form class="w-full max-w-xl bg-white rounded-lg px-4 pt-2">
+<%= form_for([@article, @article.comments.build], html: { class: "contents"}) do |f| %>
+  <%= render partial: "partials/form_errors", locals: { model: @article } %>
+
   <div class="flex flex-wrap -mx-3 mb-6">
     <% if current_user.present? %>
       <div class="flex">
-        <%= image_tag user_avatar(@user), class: "w-10 h-10 rounded-full ml-2" %>
+        <%= image_tag user_avatar(current_user), class: "w-10 h-10 rounded-full ml-2" %>
         <h2 class="px-2 mt-1 text-gray-800 text-sm"><%= current_user.name %></h2>
       </div>
     <% else %>
       <div class="w-full md:w-full px-3 mb-2 mt-2">
-        <input
-          class="text-sm bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
-          name="body" placeholder='Type Your name' required></input>
+        <%= f.text_field :user_name, class: 'text-sm bg-gray-100 rounded border border-gray-400 
+                                             leading-normal resize-none w-full py-2 px-3 font-medium 
+                                             placeholder-gray-700 focus:outline-none focus:bg-white',
+                                     placeholder: t('comment.user_name_placeholder')
+        
+        %>
       </div>
     <% end %>
     <div class="w-full md:w-full px-3 mb-2 mt-2">
-      <textarea
-        class="text-sm bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
-        name="body" placeholder='Type your comment' required></textarea>
+      <%= f.text_area :body, class: 'text-sm bg-gray-100 rounded border border-gray-400 leading-normal 
+                                     resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 
+                                     focus:outline-none focus:bg-white',
+                             placeholder: t('comment.body_placeholder')
+      
+      %>
     </div>
     <div class="w-full md:w-full flex items-start md:w-full px-3">
       <div class="-mr-1">
-        <input type='submit' class="text-sm cursor-pointer transition duration-300 text-center mt-4 bg-indigo-500 
+        <%= f.submit t('comment.create_button'), class: 'text-sm cursor-pointer transition duration-300 text-center mt-4 bg-indigo-500 
                             hover:bg-indigo-400 text-white font-bold py-2 px-4 border-b-4 
-                            border-indigo-700 hover:border-indigo-500 rounded mr-2" value='Post Comment'>
+                            border-indigo-700 hover:border-indigo-500 rounded mr-2' %>
       </div>
     </div>
-</form>
+<% end %>

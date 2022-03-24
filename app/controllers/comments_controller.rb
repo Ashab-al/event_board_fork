@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
 
   def create
     @new_comment = @article.comments.build(comment_params)
-    @new_comment.user = current_user
 
     if @new_comment.save
       redirect_to @article, notice: I18n.t('controllers.comments.created')
@@ -33,6 +32,8 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-      params.require(:comment).permit(:body, :user_name)
+      params.require(:comment)
+            .permit(:body, :user_name)
+            .merge(article_id: params[:article_id], user: current_user)
     end
 end

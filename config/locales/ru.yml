@@ -31,6 +31,7 @@ ru:
     index_events_button: 'Назад к событиям'
     edit_save_button: 'Сохранить изменения'
     new_page_title: 'Создание события'
+    only_for_authorized_users: 'только для зарегестрированных' 
   article:
     edit_button: 'Редактировать статью'
     destroy_button: 'Удалить статью'
@@ -40,6 +41,12 @@ ru:
     author: 'Автор'
     event: 'К событию'
     edit_title: 'Редактирование статьи'
+  comment:
+    author: 'автор'
+    authorized: 'авторизован'
+    create_button: 'Оставить комментарий'
+    user_name_placeholder: 'Ваше имя'
+    body_placeholder: 'Ваш комментарий'
   errors:
     format: "%{attribute} %{message}"
 

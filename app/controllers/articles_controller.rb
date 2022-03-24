@@ -10,6 +10,7 @@ class ArticlesController < ApplicationController
   def show
     @user = @article.user
     @event = @article.event
+    @comments = @article.comments
   end
 
   def new

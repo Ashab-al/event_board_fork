@@ -31,6 +31,7 @@ en:
     index_events_button: 'Back to events'
     edit_save_button: 'Save changes'
     new_page_title: 'New event'
+    only_for_authorized_users: 'only for authorized users' 
   article:
     edit_button: 'Edit this article'
     destroy_button: 'Destroy this article'
@@ -40,6 +41,12 @@ en:
     author: 'Author'
     event: 'For event'
     edit_title: 'Edit title'
+  comment:
+    author: 'author'
+    authorized: 'authorized'
+    create_button: 'Оставить комментарий'
+    user_name_placeholder: 'Your name'
+    body_placeholder: 'Your comment'
   controllers:
     events:
       created: 'Event was successfully created.'
