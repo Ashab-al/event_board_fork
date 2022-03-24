@@ -45,16 +45,28 @@
                                 hover:bg-indigo-400 text-white font-bold py-2 px-4 border-b-4 
                                 border-indigo-700 hover:border-indigo-500 rounded mr-2" %>
     </div>
-
-<div class="text-sm pt-4 flex flex-col justify-between">
-  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8" id="chat-container">
-    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8" >
-      <%= render partial: "comments/comment", collection: @comments %>
+    <div class="flex justify-between mt-4">
+      <h2 class="text-md font-bold mt-6">Comments</h2>
+      <% if current_user_can_edit?(@article) %>
+        <%= link_to "Delete all comments", article_destroy_all_comments_path(@article), class: "text-sm cursor-pointer transition duration-300 text-center mt-4 bg-red-500 
+                      2        hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 
+                              border-red-700 hover:border-red-500 rounded mr-2",
+                              method: :destroy_all, data: {confirm: 'Do u really wanna delete all comments?'}
+                              %>
+      <% end %>
     </div>
-  </div>
-</div>
-    
-    <div class="flex items-center justify-center shadow-lg mt-4 mb-4 max-w-lg">
+    <div class="text-sm pt-4 flex flex-col justify-between ье">
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8" id="chat-container">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8" >
+          <% if @article.comments.present? %>
+            <%= render partial: "comments/comment", collection: @comments %>
+          <% else %>
+            <h3 class="text-sm text-center">There are no comments here yet. Become the first </h3>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center justify-center shadow-lg mt-6 mb-4 max-w-lg">
       <%= render partial: "comments/form", locals: { article: @article } %>
     </div>
   </div>

@@ -23,9 +23,10 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_can_edit?(model, action=nil)
-    user_signed_in? && (
-      model.user == current_user ||
-      model.try(action.class.to_s.downcase).try(:user) == current_user
-    )
+    action_model = action || model
+    return unless user_signed_in?
+    return true if model.user == current_user
+  
+    model.try(action.class.to_s.downcase).try(:user) == current_user
   end
 end

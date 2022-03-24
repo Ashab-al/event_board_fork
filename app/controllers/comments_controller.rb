@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_article, only: [:create, :destroy]
+  before_action :set_article, only: [:create, :destroy, :destroy_all]
   before_action :set_comment, only: [:destroy]
 
   def create
@@ -15,11 +15,25 @@ class CommentsController < ApplicationController
   def destroy
     message = {notice: I18n.t('controllers.comments.destroyed')}
 
-    if current_user_can_edit(@comment, @article)
+    if current_user_can_edit?(@comment, @article)
       @comment.destroy!
     else
       message = {alert: I18n.t('controllers.comments.error')}
     end
+
+    redirect_to article_path(@article), message
+  end
+
+  def destroy_all
+    message = {notice: I18n.t('controllers.comments.destroyed')}
+
+    if current_user_can_edit?(@article)
+      @article.comments.destroy_all
+    else
+      message = {alert: I18n.t('controllers.comments.error')}
+    end
+
+    redirect_to article_path(@article), message
   end
 
   private
