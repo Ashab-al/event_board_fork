@@ -23,17 +23,9 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_can_edit?(model, action=nil)
-    default_action = action || model 
-    if default_action.class.to_s == 'Article'
-      user_signed_in? && (
-        model.user == current_user ||
-        (model.try(:article).present? && model.article.user == current_user)
-      )
-    elsif default_action.class.to_s == 'Event'
-      user_signed_in? && (
-        model.user == current_user ||
-        (model.try(:event).present? && model.event.user == current_user)
-      )
-    end
+    user_signed_in? && (
+      model.user == current_user ||
+      model.try(action.class.to_s.downcase).try(:user) == current_user
+    )
   end
 end
