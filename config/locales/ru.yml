@@ -49,7 +49,6 @@ ru:
     body_placeholder: 'Ваш комментарий'
   errors:
     format: "%{attribute} %{message}"
-
     messages:
       inclusion: "имеет непредусмотренное значение"
       exclusion: "имеет зарезервированное значение"
@@ -84,17 +83,12 @@ ru:
       odd: "может иметь лишь четное значение"
       even: "может иметь лишь нечетное значение"
       record_invalid: "Возникли ошибки: %{errors}"
-    
     template:
-      # Заголовок сообщения об ошибке
       header:
         one:   "%{model}: сохранение не удалось из-за %{count} ошибки"
         few:   "%{model}: сохранение не удалось из-за %{count} ошибок"
         many:  "%{model}: сохранение не удалось из-за %{count} ошибок"
         other: "%{model}: сохранение не удалось из-за %{count} ошибки"
-
-      # Первый параграф сообщения об ошибке. Можно использовать макрос %{count}
-      # The variable :count is also available
       body: "Проблемы возникли со следующими полями:"
   controllers:
     events:
@@ -111,11 +105,16 @@ ru:
       created: 'Комменатрий успешно создан!'
       destroyed: 'Комментарий успешно удалён!'
       error: 'Ошибка с комментированием'
+    subscriptions:
+      created: 'Вы подписаны на это событие'
+      destroyed: 'Участник отписан'
+      error: 'Подписка/отписка не сработала'
     models:
       user: 'Пользователь'
       event: 'Событие'
       article: 'Статья'
       comment: 'Комментарий'
+      subscriptions: 'Подписка'
     attributes:
       user:
         email: 'Email'
@@ -137,50 +136,25 @@ ru:
         user_name: 'Имя'
   date:
     formats:
-      # Форматы указываются в виде, поддерживаемом strftime.
-      # По умолчанию используется default.
-      # Можно добавлять собственные форматы
-      #
-      #
-      # Use the strftime parameters for formats.
-      # When no format has been given, it uses default.
-      # You can provide other formats here if you like!
       default: "%d.%m.%Y"
       short: "%d %b"
       long: "%d %B %Y"
-    
-    # Названия дней недели -- контекстные и отдельностоящие
     common_day_names: [воскресенье, понедельник, вторник, среда, четверг, пятница, суббота]
     standalone_day_names: [Воскресенье, Понедельник, Вторник, Среда, Четверг, Пятница, Суббота]
     common_abbr_day_names: [Вс, Пн, Вт, Ср, Чт, Пт, Сб]
     standalone_abbr_day_names: [вс, пн, вт, ср, чт, пт, сб]
-
-    # Названия месяцев -- сокращенные и полные, плюс отдельностоящие.
-    # Не забудьте nil в начале массиве (~)
-    # 
-    #
-    # Don't forget the nil at the beginning; there's no such thing as a 0th month
     month_names: [~, января, февраля, марта, апреля, мая, июня, июля, августа, сентября, октября, ноября, декабря]
     standalone_month_names: [~, Январь, Февраль, Март, Апрель, Май, Июнь, Июль, Август, Сентябрь, Октябрь, Ноябрь, Декабрь]
     abbr_month_names: [~, янв., февр., марта, апр., мая, июня, июля, авг., сент., окт., нояб., дек.]
     standalone_abbr_month_names: [~, янв., февр., март, апр., май, июнь, июль, авг., сент., окт., нояб., дек.]
-    
-    # Порядок компонентов даты для хелперов
-    #
-    #
-    # Used in date_select and datime_select.
     order: 
       - :day
       - :month
       - :year
-
   time:
-    # Форматы времени
     formats:
       default: "%a, %d %b %Y, %H:%M:%S %z"
       short: "%d %b, %H:%M"
       long: "%d %B %Y, %H:%M"
-    
-    # am/pm решено перевести как "утра/вечера" :)
     am: "утра"
     pm: "вечера"

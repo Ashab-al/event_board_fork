@@ -41,7 +41,7 @@ class ArticlesController < ApplicationController
   def destroy
     message = {notice: I18n.t('controllers.articles.destroyed')}
 
-    if current_user_can_edit(@article)
+    if current_user_can_edit_(@article)
       @article.destroy!
     else
       message = {alert: I18n.t('controllers.articles.error')}
