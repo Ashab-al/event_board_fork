@@ -9,6 +9,7 @@ class EventsController < ApplicationController
 
   def show
     @user = @event.user
+    @new_subscription = @event.subscriptions.build(params[:subscription])
   end
 
   def new

@@ -47,6 +47,14 @@ en:
     create_button: 'Оставить комментарий'
     user_name_placeholder: 'Your name'
     body_placeholder: 'Your comment'
+  subscription:
+    user_name_placeholder: 'Your name (will be ddisplayed on the website)'
+    user_email_placeholder: 'Your email (for subscription)'
+  activerecord:
+    models:
+      errors:
+        user_own_event: 'Owner can`t join'
+        email_already_exist: 'Email already exist on this event'
   controllers:
     events:
       created: 'Event was successfully created.'
@@ -62,3 +70,7 @@ en:
       created: 'Comment was successfully created.'
       destroyed: 'Comment was successfully destroyed.'
       error: 'Error with comment'
+    subscriptions:
+      created: 'Subscription successfully created'
+      error: 'Error with subscribing'
+      destroyed: 'Subsrription successfully deleted'

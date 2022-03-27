@@ -1,17 +1,29 @@
-<%= form_with(model: subscription, class: "contents") do |form| %>
-  <% if subscription.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+<%= form_for [@event, subscription] do |f| %>
+  <%= render partial: 'partials/form_errors', locals: { model: subscription } %>
 
-      <ul>
-        <% subscription.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <% unless user_signed_in? %>
+    <h2 class="text-lg mt-4">Join with email!</h2>   
+    <div class="w-full md:w-full px-3 mb-2 mt-2">
+      <%= f.text_field :user_name, class: 'text-sm bg-gray-100 rounded border border-gray-400 
+                                            leading-normal text-black resize-none w-full py-2 px-3 font-medium 
+                                            placeholder-gray-700 focus:outline-none focus:bg-white',
+                                    placeholder: t('subscription.user_name_placeholder')
+      
+      %>
+    </div>
+    <div class="w-full md:w-full px-3 mb-2 mt-2">
+      <%= f.text_field :user_email, class: 'text-sm text-black bg-gray-100 rounded border border-gray-400 
+                                            leading-normal resize-none w-full py-2 px-3 font-medium 
+                                            placeholder-gray-700 focus:outline-none focus:bg-white',
+                                    placeholder: t('subscription.user_email_placeholder')
+      
+      %>
     </div>
   <% end %>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= f.submit class: "text-sm cursor-pointer transition duration-300 text-center mt-4 bg-yellow-500 
+                        hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 
+                        border-yellow-700 hover:border-yellow-500 rounded mr-2" %>
   </div>
 <% end %>

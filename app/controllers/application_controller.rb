@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   helper_method :current_user_can_edit?
+  helper_method :user_can_join?
   before_action :set_locale
 
   protected
@@ -26,7 +27,11 @@ class ApplicationController < ActionController::Base
     action_model = action || model
     return unless user_signed_in?
     return true if model.user == current_user
-  
     model.try(action.class.to_s.downcase).try(:user) == current_user
+  end
+
+  def user_can_join?(event)
+    return false if current_user == event.user
+    return !event.subscribers.include?(current_user) if current_user.present?
   end
 end

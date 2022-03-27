@@ -5,21 +5,21 @@ class SubscriptionsController < ApplicationController
   def create
     @new_subscription = @event.subscriptions.build(subscription_params)
     @new_subscription.user = current_user
-    
+
     if @new_subscription.save
-      redirect_to @event, notice: I18n.t('controllers.subscription.created')
+      redirect_to @event, notice: I18n.t('controllers.subscriptions.created')
     else
-      redirect_to 'events/show', notice: I18n.t('controllers.subscription.error')
+      redirect_to 'events/show', notice: I18n.t('controllers.subscriptions.error')
     end
   end
 
   def destroy
-    message = {notice: I18n.t('controllers.subscription.destroyed')}
+    message = {notice: I18n.t('controllers.subscriptions.destroyed')}
 
-    if current_user_can_edit(@subscription, @event)
+    if @subscription.user == current_user
       @subscription.destroy
     else
-      message = {alert: I18n.t('controllers.subscription.error')}
+      message = {alert: I18n.t('controllers.subscriptions.error')}
     end
 
     redirect_to @event, message
@@ -27,7 +27,7 @@ class SubscriptionsController < ApplicationController
 
   private
     def set_subscription
-      @subscription = @event.subscriptions.find(params[:id])
+      @subscription = @event.subscriptions.find_by(user_id: current_user.id)
     end
 
     def set_event

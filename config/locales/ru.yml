@@ -47,6 +47,14 @@ ru:
     create_button: 'Оставить комментарий'
     user_name_placeholder: 'Ваше имя'
     body_placeholder: 'Ваш комментарий'
+  subscription:
+    user_name_placeholder: 'Ваше имя (будет отображаться на сайте)'
+    user_email_placeholder: 'Ваш email для подписки'
+  activerecord:
+    models:
+      errors:
+        user_own_event: 'Владелец не может быть подписан на своё событие'
+        email_already_exist: 'Такой email уже подписан на это событие'
   errors:
     format: "%{attribute} %{message}"
     messages:
