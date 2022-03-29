@@ -23,8 +23,6 @@ class UsersController < ApplicationController
       @user = current_user
     end
 
-    def 
-
     def user_params
       params.require(:user).permit(:name, :email, :about)
     end
