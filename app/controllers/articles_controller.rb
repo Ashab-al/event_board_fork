@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_article, only: [:show]
+  before_action :set_article, only: [:show, :like]
   before_action :set_current_user_article, only: [:edit, :update, :destroy]
 
   def index
@@ -11,9 +11,9 @@ class ArticlesController < ApplicationController
     @user = @article.user
     @event = @article.event
     @comments = @article.comments
-  end
+  end 
 
-  def new
+  def new 
     @article = current_user.articles.build
   end
 
@@ -46,6 +46,18 @@ class ArticlesController < ApplicationController
     else
       message = {alert: I18n.t('controllers.articles.error')}
     end
+  end
+
+  def like 
+    like = @article.likes.find_by(user: current_user)
+
+    if like.present?
+      like.destroy
+    else
+      @article.likes.create(user: current_user)
+    end
+    
+    redirect_to @article
   end
 
   private

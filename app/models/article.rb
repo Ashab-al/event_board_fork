@@ -3,6 +3,7 @@ class Article < ApplicationRecord
 
   belongs_to :user
   belongs_to :event
+  has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
   has_rich_text :body

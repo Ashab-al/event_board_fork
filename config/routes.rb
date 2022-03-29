@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :articles do 
     resources :comments, only: [:create, :destroy]
+    member { post :like }
     post 'destroy_all_comments', to: "comments#destroy_all"
   end
 
