@@ -4,7 +4,7 @@
   <div class="flex flex-wrap -mx-3 mb-6">
     <% if current_user.present? %>
       <div class="flex">
-        <%= image_tag user_avatar(current_user), class: "w-10 h-10 rounded-full ml-2" %>
+        <%= image_tag model_picture(current_user), class: "w-10 h-10 rounded-full ml-2" %>
         <h2 class="px-2 mt-1 text-gray-800 text-sm"><%= current_user.name %></h2>
       </div>
     <% else %>

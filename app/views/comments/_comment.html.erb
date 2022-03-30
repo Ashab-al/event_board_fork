@@ -2,9 +2,9 @@
     <div class="flex flex-row">
         <a href="#" class="basis-1/12">
             <% if comment.user.present? %>
-            <%= image_tag user_avatar(comment.user), class: "w-10 h-10 rounded-full" %>
+                <%= image_tag model_picture(comment.user), class: "w-10 h-10 rounded-full" %>
             <% else %>
-            <%= image_tag user_avatar(comment.user), class: "w-10 h-10 rounded-full" %>
+                <%= image_tag model_picture(User.new), class: "w-10 h-10 rounded-full" %>
             <% end %>
         </a>
         <div class="basis-3/12">

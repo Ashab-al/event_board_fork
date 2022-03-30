@@ -1,5 +1,5 @@
 <div class="max-w-sm mx-auto rounded overflow-hidden shadow-lg">
-  <img class="w-full h-60" src="<%= article.picture %>" alt="Sunset in the mountains">
+  <%= image_tag model_picture(article), class: 'w-full h-60' %>
   <div class="px-6 py-4">
     <div class="font-bold text-xl mb-2"><%= article.title %></div>
     <p class="text-gray-700 text-base mb-4 ">

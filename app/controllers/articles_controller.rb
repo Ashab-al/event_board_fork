@@ -14,7 +14,12 @@ class ArticlesController < ApplicationController
   end 
 
   def new 
-    @article = current_user.articles.build
+    if user_can_create_article?
+      @article = current_user.articles.build
+      @events = current_user.subscriptions.map(&:event) + current_user.events
+    else
+      redirect_to articles_url, alert: 'U can`t create article!' 
+    end
   end
 
   def edit
@@ -22,8 +27,10 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.build(article_params)
-
-    if @article.save
+    
+    if user_can_create_article?
+      redirect_to articles_url, notice: 'U can`t create article!' 
+    elsif @article.save 
       redirect_to @article, notice: I18n.t('controllers.articles.created')
     else
       render :new
@@ -41,11 +48,13 @@ class ArticlesController < ApplicationController
   def destroy
     message = {notice: I18n.t('controllers.articles.destroyed')}
 
-    if current_user_can_edit_(@article)
+    if current_user_can_edit?(@article)
       @article.destroy!
     else
       message = {alert: I18n.t('controllers.articles.error')}
     end
+
+    redirect_to articles_url, message
   end
 
   def like 
@@ -74,6 +83,6 @@ class ArticlesController < ApplicationController
     end
 
     def article_params
-      params.require(:article).permit(:title, :body, :picture, :event_id)
+      params.require(:article).permit(:title, :body, :picture, :event_id, :image)
     end
 end

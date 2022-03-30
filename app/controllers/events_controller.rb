@@ -38,8 +38,15 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event.destroy
-    redirect_to events_url, notice: I18n.t('controllers.events.destroyed')
+    message  = {notice: I18n.t('controllers.events.destroyed')}
+
+    if current_user_can_edit?(@event)
+      @event.destroy
+    else
+      message  = {notice: I18n.t('controllers.events.error')}
+    end
+
+    redirect_to events_url, message 
   end
 
   private
@@ -56,6 +63,6 @@ class EventsController < ApplicationController
     end
     
     def event_params
-      params.require(:event).permit(:title, :description, :address, :datetime)
+      params.require(:event).permit(:title, :description, :address, :datetime, :image)
     end
 end

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user_can_edit?
   helper_method :user_can_join?
+  helper_method :user_can_create_article?
   before_action :set_locale
 
   protected
@@ -28,6 +29,11 @@ class ApplicationController < ActionController::Base
     return unless user_signed_in?
     return true if model.user == current_user
     model.try(action.class.to_s.downcase).try(:user) == current_user
+  end
+
+  def user_can_create_article?
+    return false unless user_signed_in?
+    return !(current_user.subscriptions.map(&:event) + current_user.events).empty?
   end
 
   def user_can_join?(event)

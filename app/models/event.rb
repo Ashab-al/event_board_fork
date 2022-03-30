@@ -3,6 +3,7 @@ class Event < ApplicationRecord
   has_many :articles, dependent: :destroy
   has_many :subscriptions, dependent: :destroy
   has_many :subscribers, through: :subscriptions, source: :user 
+  has_one_attached :image
 
   validates :title, :user, :address, :datetime, presence: true
   

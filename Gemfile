@@ -12,6 +12,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem "devise", "~> 4.8"
 gem 'devise-i18n'
 gem "tailwindcss-rails", "~> 2.0"
+gem "image_processing", "~> 1.12"
 
 group :development, :test do
   gem 'byebug'
@@ -20,3 +21,4 @@ end
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
 end
+

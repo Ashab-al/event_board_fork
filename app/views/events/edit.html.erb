@@ -4,7 +4,6 @@
   <div class="mx-auto flex px-5 md:flex-row flex-col jobcard">
     <div
       class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center">
-
       <figure class="visible">
         <div class="">
           <div class="pt-5 px-2 sm:px-6">
@@ -26,7 +25,8 @@
 
     </div>
     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 sm:block hidden">
-      <img class="object-cover object-center rounded" alt="hero" src="<%= asset_path('event.jpg') %>" />
+      <%= image_tag model_picture(@event), class: "object-cover object-center rounded" %>
+      <%= f.file_field :image %>
     </div>
   </div>
 <% end %>

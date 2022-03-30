@@ -1,7 +1,7 @@
 <div class="w-full lg:max-w-full lg:flex">
   <%= content_tag "div", "",
                   class: "h-64 lg:h-auto lg:w-64 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden",
-                  style: "background: url(#{asset_path('event.jpg')}) center center; background-size: cover",
+                  style: "background: url(#{url_for(model_picture(event))}) center center; background-size: cover",
                   title: event.title
   %>
   <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
@@ -20,7 +20,7 @@
     </p>
   </div>
   <a href="<%= user_path(event.user)%>" class="flex items-center">
-    <%= image_tag user_avatar(@user), class: "w-10 h-10 rounded-full mr-4" %>
+    <%= image_tag model_picture(event.user), class: "w-10 h-10 rounded-full mr-4" %>
     <div class="text-sm">
       <p class="text-gray-900 leading-none"><%= event.user.name %></p>
       <p class="text-gray-600"><%= event.user.email %></p>
