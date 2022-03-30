@@ -25,6 +25,19 @@
 		<%= image_tag model_picture(@user), class: "rounded-none lg:rounded-lg shadow-2xl hidden lg:block" %>
 	</div>
 
+<section id="user_subscriptions" class="w-full mt-5 lg:text-center">
+	<p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+		<% if @user.subscriptions.present? %>
+			Subscriptions
+		<% else %>
+			User is not subscribed to events
+		<% end %>
+	</p>
+  <div class="grid gap-4 grid-rows-2 mt-10 grid-cols-1 sm:grid-cols-2">
+		<%= render partial: "events/event", collection: @signed_events %>
+  </div>
+</section>
+
 
 <section id="user_events_owner" class="w-full mt-20 lg:text-center">
 	<p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">

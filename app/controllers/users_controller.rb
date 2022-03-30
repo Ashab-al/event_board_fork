@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @signed_events = @user.subscriptions.map(&:event)
   end
 
   def edit
