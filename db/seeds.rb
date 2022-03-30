@@ -61,7 +61,6 @@ articles = [
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus, aspernatur.
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus, aspernatur.
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus, aspernatur.',
-    picture: 'https://tinypng.com/images/social/website.jpg',
     event: Event.first,
     user: Event.first.subscribers.first
   }
