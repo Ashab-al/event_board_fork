@@ -2,7 +2,7 @@
   <%= render partial: 'partials/form_errors', locals: { model: subscription } %>
 
   <% unless user_signed_in? %>
-    <h2 class="text-lg mt-4">Join with email!</h2>   
+    <h2 class="text-lg mt-4"><%= t('subscription.form.title') %></h2>   
     <div class="w-full md:w-full px-3 mb-2 mt-2">
       <%= f.text_field :user_name, class: 'text-sm bg-gray-100 rounded border border-gray-400 
                                             leading-normal text-black resize-none w-full py-2 px-3 font-medium 
@@ -22,7 +22,7 @@
   <% end %>
 
   <div class="inline">
-    <%= f.submit class: "text-sm cursor-pointer transition duration-300 text-center mt-4 bg-yellow-500 
+    <%= f.submit t('subscription.form.button'), class: "text-sm cursor-pointer transition duration-300 text-center mt-4 bg-yellow-500 
                         hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 
                         border-yellow-700 hover:border-yellow-500 rounded mr-2" %>
   </div>

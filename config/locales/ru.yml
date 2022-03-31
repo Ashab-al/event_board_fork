@@ -27,11 +27,13 @@ ru:
     articles_not_exist: 'У этого пользователя ещё нет своих статей'
   event:
     create_button: 'Создать событие'
+    destroy_button: 'Удалить событие'
     edit_button: 'Редактировать событие'
     index_events_button: 'Назад к событиям'
     edit_save_button: 'Сохранить изменения'
     new_page_title: 'Создание события'
     only_for_authorized_users: 'только для зарегестрированных' 
+    subscribers_title: 'Подписчики'
   article:
     edit_button: 'Редактировать статью'
     destroy_button: 'Удалить статью'
@@ -62,10 +64,38 @@ ru:
       password_placeholder: 'Придумайте пароль'
       
   subscription:
+    form:
+      title: 'Подпишись с помощью своей электронной почты'
+      button: 'Подписаться'
     user_name_placeholder: 'Ваше имя (будет отображаться на сайте)'
     user_email_placeholder: 'Ваш email для подписки'
   activerecord:
+    attributes:
+      user:
+        email: 'Email'
+        name: 'Имя'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+      event:
+        title: 'Название'
+        address: 'Место проведения'
+        datetime: 'Дата и время'
+        description: 'Описание'
+        image: 'Фотография'
+      article:
+        title: 'Название'
+        body: 'Текст статьи'
+        event: 'Событие'
+        image: 'Фотография'
+      comment:
+        body: 'Текст'
+        user_name: 'Имя'
     models:
+      user: 'Пользователь'
+      event: 'Событие'
+      article: 'Статья'
+      comment: 'Комментарий'
+      subscriptions: 'Подписка'
       errors:
         user_own_event: 'Владелец не может быть подписан на своё событие'
         email_already_exist: 'Такой email уже подписан на это событие'
@@ -131,31 +161,6 @@ ru:
       created: 'Вы подписаны на это событие'
       destroyed: 'Участник отписан'
       error: 'Подписка/отписка не сработала'
-    models:
-      user: 'Пользователь'
-      event: 'Событие'
-      article: 'Статья'
-      comment: 'Комментарий'
-      subscriptions: 'Подписка'
-    attributes:
-      user:
-        email: 'Email'
-        name: 'Имя'
-        password: 'Пароль'
-        password_confirmation: 'Подтверждение пароля'
-      event:
-        title: 'Название'
-        address: 'Место проведения'
-        datetime: 'Дата и время'
-        description: 'Описание'
-      article:
-        title: 'Название'
-        body: 'Текст статьи'
-        event: 'Событие'
-        picture: 'Обложка'
-      comment:
-        body: 'Текст'
-        user_name: 'Имя'
   date:
     formats:
       default: "%d.%m.%Y"

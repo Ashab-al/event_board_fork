@@ -26,12 +26,14 @@ en:
     articles_title: 'User articles'
     articles_not_exist: 'This user did not created articles...'
   event:
-    create_button: 'Create Event'
-    edit_button: 'Edit Event'
+    create_button: 'Create event'
+    destroy_button: 'Destroy event'
+    edit_button: 'Edit event'
     index_events_button: 'Back to events'
     edit_save_button: 'Save changes'
     new_page_title: 'New event'
     only_for_authorized_users: 'only for authorized users' 
+    subscribers_title: 'Subscribers'
   article:
     edit_button: 'Edit this article'
     destroy_button: 'Destroy this article'
@@ -61,6 +63,9 @@ en:
       password_placeholder: 'Come up with a password'
       password_confirmation_placeholder: 'Password confirmation'
   subscription:
+    form:
+      title: 'Join with email'
+      button: 'Subscribe'
     user_name_placeholder: 'Your name (will be displayed on the website)'
     user_email_placeholder: 'Your email (for subscription)'
   activerecord:
