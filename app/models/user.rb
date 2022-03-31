@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_one_attached :image
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
 
   validates :name, presence: true, length: { maximum: 35 }
   validates :about, length: { maximum: 500 }
