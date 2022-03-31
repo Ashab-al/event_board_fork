@@ -166,3 +166,13 @@ ru:
       long: "%d %B %Y, %H:%M"
     am: "утра"
     pm: "вечера"
+  event_mailer:
+    subscription:
+      title: 'Новая подписка'
+      name: 'Имя'
+      email: 'Email'
+      author: 'Автор'
+      event: 'Событие'
+      datetime: 'Состоится'
+      owner: 'Организатор'
+
