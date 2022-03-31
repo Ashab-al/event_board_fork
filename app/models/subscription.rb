@@ -2,7 +2,6 @@ class Subscription < ApplicationRecord
   belongs_to :event
   belongs_to :user, optional: true
   
-
   validates :event, presence: true
 
   validates :user_name, presence: true, unless: Proc.new { user.present? }
@@ -30,16 +29,17 @@ class Subscription < ApplicationRecord
     end
   end
 
+  private
 
-  def user_own_event
-    if user&.events&.include?(event)
-      errors.add(:user, I18n.t("activerecord.models.errors.user_own_event"))
+    def user_own_event
+      if user&.events&.include?(event)
+        errors.add(:user, I18n.t("activerecord.models.errors.user_own_event"))
+      end
     end
-  end
 
-  def user_email_present
-    if User.where(email: user_email.downcase).present?
-      errors.add(:user_email, I18n.t("activerecord.models.errors.email_already_exist"))
+    def user_email_present
+      if User.where(email: user_email.downcase).present?
+        errors.add(:user_email, I18n.t("activerecord.models.errors.email_already_exist"))
+      end
     end
-  end
 end
