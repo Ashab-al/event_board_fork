@@ -47,6 +47,20 @@ ru:
     create_button: 'Оставить комментарий'
     user_name_placeholder: 'Ваше имя'
     body_placeholder: 'Ваш комментарий'
+  user:
+    log_in:
+      title: 'Авторизация'
+      email_placeholder: 'Ваша почта'
+      password_placeholder: 'Ваш пароль'
+      forgot_password_link: 'Забыли пароль?'
+    sign_up:
+      title: 'Создайте свой аккаунт!'
+      email_placeholder: 'Ваша почта'
+      name_placeholder: 'Ваше имя'
+      password_help_text: 'Придумайте сложный пароль. Минимум %{min_length} символов'
+      password_confirmation_placeholder: 'Подтвердите пароль'
+      password_placeholder: 'Придумайте пароль'
+      
   subscription:
     user_name_placeholder: 'Ваше имя (будет отображаться на сайте)'
     user_email_placeholder: 'Ваш email для подписки'

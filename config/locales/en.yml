@@ -44,11 +44,24 @@ en:
   comment:
     author: 'author'
     authorized: 'authorized'
-    create_button: 'Оставить комментарий'
+    create_button: 'send comment'
     user_name_placeholder: 'Your name'
     body_placeholder: 'Your comment'
+  user:
+    log_in:
+      title: 'Log in'
+      email_placeholder: 'Your email'
+      password_placeholder: 'Your password'
+      forgot_password_link: 'Forgot yout password?'
+    sign_up:
+      title: 'Create your account'
+      email_placeholder: 'Your email'
+      name_placeholder: 'Your name'
+      password_help_text: 'Come up with a complex password. Minimum of %{min_length} characters'
+      password_placeholder: 'Come up with a password'
+      password_confirmation_placeholder: 'Password confirmation'
   subscription:
-    user_name_placeholder: 'Your name (will be ddisplayed on the website)'
+    user_name_placeholder: 'Your name (will be displayed on the website)'
     user_email_placeholder: 'Your email (for subscription)'
   activerecord:
     models:
