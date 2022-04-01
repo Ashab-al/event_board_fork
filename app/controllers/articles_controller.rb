@@ -27,11 +27,10 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.build(article_params)
+    @events = current_user.subscriptions.map(&:event) + current_user.events
     
-    if user_can_create_article?
-      redirect_to articles_url, notice: 'U can`t create article!' 
-    elsif @article.save 
-      redirect_to @article, notice: I18n.t('controllers.articles.created')
+    if @article.save
+      redirect_to articles_url, notice: I18n.t('controllers.articles.created') 
     else
       render :new
     end
