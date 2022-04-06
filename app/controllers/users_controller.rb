@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-
   before_action :set_current_user, except: [:show]
+
+  def index
+    @users = User.order(created_at: :desc)
+  end
 
   def show
     @user = User.find(params[:id])
@@ -17,6 +20,12 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    User.find(params[:id]).destroy! 
+
+    redirect_to users_url
   end
 
   private

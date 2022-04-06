@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   resources :events do 
     resources :subscriptions, only: [:create, :destroy]
   end
-  resources :users, only: [:show, :update, :edit]
+  resources :users, only: [:index, :show, :update, :edit]
 end
