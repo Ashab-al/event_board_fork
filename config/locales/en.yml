@@ -2,8 +2,7 @@ en:
   title: 'Event board'
   confirm: 'Are you sure?'
   notice:
-    success: 'Success'
-    error: 'Ошибка!'
+    success: 'Success' error: 'Ошибка!'
   navbar:
     articles: 'Articles'
     events: 'Events'
@@ -52,6 +51,7 @@ en:
     user_name_placeholder: 'Your name'
     body_placeholder: 'Your comment'
     destroy_all_button: 'Destroy all commens'
+    no_comments_title: 'There are no comments here yet. Become the first'
   user:
     log_in:
       title: 'Log in'

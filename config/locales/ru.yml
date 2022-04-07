@@ -52,6 +52,7 @@ ru:
     user_name_placeholder: 'Ваше имя'
     body_placeholder: 'Ваш комментарий'
     destroy_all_button: 'Удалить все комментарии'
+    no_comments_title: 'Здесь пока нет комментариев. Станьте первым!'
   user:
     log_in:
       title: 'Авторизация'

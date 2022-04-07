@@ -1,10 +1,8 @@
-<!-- component -->
 <section class="w-full text-indigo-200 body-font p-5 bg-indigo-900">
   <div class="mx-auto flex px-5 md:flex-row flex-col jobcard">
     <div
       class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center">
-
-      <figure class="visible">
+<figure class="visible">
 
         <div class="">
 
@@ -59,7 +57,7 @@
                   <%= link_to "Leave event", event_subscription_path(@event), class: "text-sm cursor-pointer transition duration-300 text-center mt-4 bg-yellow-500 
                         hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 
                         border-yellow-700 hover:border-yellow-500 rounded mr-2",
-                        method: :delete, data: {confirm: t('confirm')}
+                        method: :delete, data: { confirm: t('confirm') }
                   %>
                 <% end %>
               </div>
