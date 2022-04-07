@@ -53,12 +53,12 @@
                                 border-indigo-700 hover:border-indigo-500 rounded mr-2" %>
     </div>
     <div class="flex justify-between mt-4">
-      <h2 class="text-md font-bold mt-6">Comments</h2>
+      <h2 class="text-md font-bold mt-6"><%= t('comment.title') %></h2>
       <% if policy(@article).edit? %>
-        <%= link_to "Delete all comments", article_destroy_all_comments_path(@article), class: "text-sm cursor-pointer transition duration-300 text-center mt-4 bg-red-500 
-                      2        hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 
+        <%= link_to t('comment.destroy_all_button'), article_destroy_all_comments_path(@article), class: "text-sm cursor-pointer transition duration-300 text-center
+                              mt-4 bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 
                               border-red-700 hover:border-red-500 rounded mr-2",
-                              method: :destroy_all, data: {confirm: 'Do u really wanna delete all comments?'}
+                              method: :destroy_all, data: {confirm: t('confirm')}
                               %>
       <% end %>
     </div>

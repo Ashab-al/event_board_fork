@@ -1,7 +1,7 @@
 <%= form_for([@article, @article.comments.build], html: { class: "contents"}) do |f| %>
   <%= render partial: "partials/form_errors", locals: { model: @article } %>
 
-  <div class="flex flex-wrap -mx-3 mb-6">
+  <div class="flex flex-wrap -mx-3 p-2 mb-6">
     <% if current_user.present? %>
       <div class="flex">
         <%= image_tag model_picture(current_user), class: "w-10 h-10 rounded-full ml-2" %>

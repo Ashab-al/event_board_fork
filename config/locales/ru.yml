@@ -1,5 +1,6 @@
 ru:
   title: 'Доска событий'
+  confirm: 'Вы уверены?'
   notice:
     success: 'Успешно'
     error: 'Ошибка!'
@@ -44,11 +45,13 @@ ru:
     event: 'К событию'
     edit_title: 'Редактирование статьи'
   comment:
+    title: 'Комментарии'
     author: 'автор'
     authorized: 'авторизован'
     create_button: 'Оставить комментарий'
     user_name_placeholder: 'Ваше имя'
     body_placeholder: 'Ваш комментарий'
+    destroy_all_button: 'Удалить все комментарии'
   user:
     log_in:
       title: 'Авторизация'

@@ -1,5 +1,6 @@
 en:
   title: 'Event board'
+  confirm: 'Are you sure?'
   notice:
     success: 'Success'
     error: 'Ошибка!'
@@ -44,11 +45,13 @@ en:
     event: 'For event'
     edit_title: 'Edit title'
   comment:
+    title: 'Comments'
     author: 'author'
     authorized: 'authorized'
     create_button: 'send comment'
     user_name_placeholder: 'Your name'
     body_placeholder: 'Your comment'
+    destroy_all_button: 'Destroy all commens'
   user:
     log_in:
       title: 'Log in'

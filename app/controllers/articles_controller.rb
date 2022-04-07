@@ -7,8 +7,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @user = @article.user
-    @event = @article.event
+    @user = @article.user @event = @article.event
     @comments = @article.comments
   end 
 
@@ -45,15 +44,10 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    message = {notice: I18n.t('controllers.articles.destroyed')}
+    authorize @article
+    @article.destroy!
 
-    if current_user_can_edit?(@article)
-      @article.destroy!
-    else
-      message = {alert: I18n.t('controllers.articles.error')}
-    end
-
-    redirect_to articles_url, message
+    redirect_to articles_url, alert: I18n.t('controllers.articles.destroyed')
   end
 
   def like 

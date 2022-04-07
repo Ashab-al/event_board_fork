@@ -46,7 +46,7 @@
                 <%= link_to t('event.edit_button'), edit_event_path(@event), class: 'transition cursor-pointer duration-300 text-center mt-4 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded' %>
               </div>
               <div class="mt-6">
-                <%= link_to t('event.destroy_button'), event_path(@event), method: :delete, class: "cursor-pointer transition duration-300 text-center mt-4 bg-red-500 
+                <%= link_to t('event.destroy_button'), event_path(@event), method: :delete, data: {confirm: t('confirm')}, class: "cursor-pointer transition duration-300 text-center mt-4 bg-red-500 
                                           hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 
                                           border-red-700 hover:border-red-500 rounded mr-2" %>
               </div>
@@ -59,7 +59,7 @@
                   <%= link_to "Leave event", event_subscription_path(@event), class: "text-sm cursor-pointer transition duration-300 text-center mt-4 bg-yellow-500 
                         hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 
                         border-yellow-700 hover:border-yellow-500 rounded mr-2",
-                        method: :delete
+                        method: :delete, data: {confirm: t('confirm')}
                   %>
                 <% end %>
               </div>

@@ -19,4 +19,8 @@ class ArticlePolicy < ApplicationPolicy
   def edit?
     update?
   end
+
+  def destroy?
+    update?
+  end
 end
