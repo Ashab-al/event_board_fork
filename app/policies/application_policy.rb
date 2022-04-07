@@ -33,14 +33,6 @@ class ApplicationPolicy
     false
   end
 
-  private 
-
-    def current_user_can_edit?(model, action=nil)
-      action_model = action || model
-      return true if model.user == @user
-      model.try(action_model.class.to_s.downcase).try(:user) == @user 
-    end
-
   class Scope
     attr_reader :user, :scope
 

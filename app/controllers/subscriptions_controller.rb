@@ -15,15 +15,10 @@ class SubscriptionsController < ApplicationController
   end
 
   def destroy
-    message = {notice: I18n.t('controllers.subscriptions.destroyed')}
+    authorize @subscription
+    @subscription.destroy
 
-    if @subscription.user == current_user
-      @subscription.destroy
-    else
-      message = {alert: I18n.t('controllers.subscriptions.error')}
-    end
-
-    redirect_to @event, message
+    redirect_to @event, notice: I18n.t('controllers.subscriptions.destroyed')
   end
 
   private

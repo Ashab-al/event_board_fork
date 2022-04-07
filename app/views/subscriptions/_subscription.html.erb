@@ -1,8 +1,8 @@
 <% if subscription.user.present? %>
   <a href="<%= user_path(subscription.user) %>" class="block h-12 w-12 mx-auto">
-  <%= image_tag model_picture(subscription.user), class: 'h-full w-full object-cover overflow-hidden rounded-full' %>
-  <h3 class="font-bold text-sm text-center"><%= subscription.user_name %></h3>
-</a>
+    <%= image_tag model_picture(subscription.user), class: 'h-full w-full object-cover overflow-hidden rounded-full' %>
+    <h3 class="font-bold text-sm text-center"><%= subscription.user.name %></h3>
+  </a>
 <% else %>
   <div class="block h-12 w-12 mx-auto">
     <img src="<%= model_picture(User.new) %>" alt

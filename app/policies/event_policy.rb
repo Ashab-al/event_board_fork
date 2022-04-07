@@ -10,10 +10,14 @@ class EventPolicy < ApplicationPolicy
   end
 
   def update?
-    current_user_can_edit?(@record)
+    @user == @record.user
   end
 
   def destroy?
     update?
+  end
+
+  def can_leave?
+    @record.subscribers.include?(@user)
   end
 end
