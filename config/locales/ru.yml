@@ -13,7 +13,7 @@ ru:
     sign_up: 'Регистрация'
     log_in: 'Вход'
     profile: 'Профиль'
-    exit: 'Выход'
+    exit: 'Выход' 
     new_event: 'Новое событие'
     new_article: 'Новая статья'
     join_to_event: 'Присоединиться'
@@ -62,7 +62,6 @@ ru:
       password_help_text: 'Придумайте сложный пароль. Минимум %{min_length} символов'
       password_confirmation_placeholder: 'Подтвердите пароль'
       password_placeholder: 'Придумайте пароль'
-      
   subscription:
     form:
       title: 'Подпишись с помощью своей электронной почты'
@@ -101,6 +100,7 @@ ru:
         user_own_event: 'Владелец не может быть подписан на своё событие'
         email_already_exist: 'Такой email уже подписан на это событие'
   errors:
+    not_authorized: 'У вас нет прав на это действие'
     format: "%{attribute} %{message}"
     messages:
       inclusion: "имеет непредусмотренное значение"

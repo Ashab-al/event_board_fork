@@ -1,20 +1,16 @@
-class UserPolicy < ApplicationPolicy
+class EventPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
     end
   end
   
-  def index?
-    true
-  end
-
   def edit?
     update?
   end
 
   def update?
-    @record == @user
+    current_user_can_edit?(@record)
   end
 
   def destroy?

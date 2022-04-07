@@ -3,9 +3,8 @@ class ApplicationPolicy
 
   def initialize(user, record)
     @user = user
-    @record = record
+    @record = record 
   end
-
   def index?
     false
   end
@@ -34,7 +33,17 @@ class ApplicationPolicy
     false
   end
 
+  private 
+
+    def current_user_can_edit?(model, action=nil)
+      action_model = action || model
+      return true if model.user == @user
+      model.try(action_model.class.to_s.downcase).try(:user) == @user 
+    end
+
   class Scope
+    attr_reader :user, :scope
+
     def initialize(user, scope)
       @user = user
       @scope = scope
@@ -43,10 +52,6 @@ class ApplicationPolicy
     def resolve
       raise NotImplementedError, "You must define #resolve in #{self.class}"
     end
-
-    private
-
-    attr_reader :user, :scope
   end
 end
 

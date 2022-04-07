@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :set_current_user, except: [:show]
+  before_action :set_user, except: [:show, :index]
+  before_action :authorize_user, except: [:show, :index]
 
   def index
     @users = User.order(created_at: :desc)
+    authorize @users
   end
 
   def show
@@ -23,14 +25,19 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy! 
+    @user.destroy! 
 
     redirect_to users_url
   end
 
   private
-    def set_current_user
-      @user = current_user
+
+    def set_user
+      @user = User.find(params[:id])
+    end
+
+    def authorize_user
+      authorize @user
     end
 
     def user_params

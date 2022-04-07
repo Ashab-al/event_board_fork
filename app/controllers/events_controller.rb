@@ -1,7 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]  
-  before_action :set_event, only: [:show]
-  before_action :set_current_user_event, only: [:edit, :update, :destroy]
+  before_action :set_event, except: [:index, :new, :create]
 
   def index
     @events = Event.all
@@ -9,7 +8,7 @@ class EventsController < ApplicationController
 
   def show
     @user = @event.user
-    @new_subscription = @event.subscriptions.build(params[:subscription])
+    @new_subscription = @event.subscriptions.build(params[:subscription]) 
   end
 
   def new
@@ -17,6 +16,7 @@ class EventsController < ApplicationController
   end
 
   def edit
+    authorize @event
   end
 
   def create
@@ -25,7 +25,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to @event, notice: I18n.t('controllers.events.created')
     else
-      render :new
+      render :new, notice: I18n.t('controllers.events.error')
     end
   end
   
@@ -38,28 +38,16 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    message  = {notice: I18n.t('controllers.events.destroyed')}
+    authorize @event
 
-    if current_user_can_edit?(@event)
-      @event.destroy
-    else
-      message  = {notice: I18n.t('controllers.events.error')}
-    end
+    @event.destroy
 
-    redirect_to events_url, message 
+    redirect_to events_url, notice: I18n.t('controllers.events.destroyed')
   end
 
   private
     def set_event
       @event = Event.find(params[:id])
-    end
-
-    def set_current_user_event
-      begin
-        @event = current_user.events.find(params[:id])
-      rescue ActiveRecord::RecordNotFound
-        redirect_to user_path(current_user), notice: I18n.t('controllers.events.cant_change')
-      end
     end
     
     def event_params

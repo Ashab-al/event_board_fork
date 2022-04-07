@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
   include Pundit
 
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  before_action :configure_permitted_parameters, if: :devise_controller?
   helper_method :current_user_can_edit?
   helper_method :user_can_join?
   helper_method :user_can_create_article?
@@ -20,17 +21,14 @@ class ApplicationController < ActionController::Base
       keys: [:password, :password_confirmation, :current_password]
     )
   end
+  
+  def user_not_authorized
+    redirect_to root_path, notice: I18n.t('errors.not_authorized') 
+  end
 
   def set_locale
     I18n.locale = params[:locale] || session[:locale] || I18n.default_locale
     session[:locale] = I18n.locale
-  end
-
-  def current_user_can_edit?(model, action=nil)
-    action_model = action || model
-    return unless user_signed_in?
-    return true if model.user == current_user
-    model.try(action.class.to_s.downcase).try(:user) == current_user
   end
 
   def user_can_create_article?
