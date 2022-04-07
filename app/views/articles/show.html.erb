@@ -1,6 +1,5 @@
 <div class="container w-full md:max-w-3xl mx-auto py-10">
-  <% if current_user_can_edit?(@article) %>
-    <div class="flex flex-wrap content-around mb-4">
+  <% if policy(@article).edit? %> <div class="flex flex-wrap content-around mb-4">
       <%= link_to t('article.edit_button'), edit_article_path(@article), class: "cursor-pointer transition duration-300 text-center mt-4 bg-indigo-500 
                                   hover:bg-indigo-400 text-white font-bold py-2 px-4 border-b-4 
                                   border-indigo-700 hover:border-indigo-500 rounded mr-2" %>
@@ -55,7 +54,7 @@
     </div>
     <div class="flex justify-between mt-4">
       <h2 class="text-md font-bold mt-6">Comments</h2>
-      <% if current_user_can_edit?(@article) %>
+      <% if policy(@article).edit? %>
         <%= link_to "Delete all comments", article_destroy_all_comments_path(@article), class: "text-sm cursor-pointer transition duration-300 text-center mt-4 bg-red-500 
                       2        hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 
                               border-red-700 hover:border-red-500 rounded mr-2",

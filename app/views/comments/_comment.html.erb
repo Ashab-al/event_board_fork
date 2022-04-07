@@ -23,7 +23,7 @@
                 <%= l comment.created_at, format: :short %>
             </div>
         </div>
-        <% if current_user_can_edit?(comment, @article)%>
+        <% if policy(comment).destroy? %>
             <div class="basis-7/12"><%= comment.body %></div>
             <%= link_to article_comment_path(comment.article, comment), method: :delete, data: {confirm: 'Do u really wanna delete this comment?'}, class: 'basis-1/12' do %>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"

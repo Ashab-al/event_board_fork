@@ -13,30 +13,23 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    message = {notice: I18n.t('controllers.comments.destroyed')}
+    authorize @comment
+    @comment.destroy!
 
-    if current_user_can_edit?(@comment, @article)
-      @comment.destroy!
-    else
-      message = {alert: I18n.t('controllers.comments.error')}
-    end
-
-    redirect_to article_path(@article), message
+    redirect_to article_path(@article), alert: I18n.t('controllers.comments.destroyed')
   end
 
   def destroy_all
-    message = {notice: I18n.t('controllers.comments.destroyed')}
+    @comments = @article.comments
+    authorize @comments unless @article.comments.empty?
 
-    if current_user_can_edit?(@article)
-      @article.comments.destroy_all
-    else
-      message = {alert: I18n.t('controllers.comments.error')}
-    end
+    @comments.destroy_all
 
-    redirect_to article_path(@article), message
+    redirect_to article_path(@article), notice: I18n.t('controllers.comments.destroyed_all')
   end
 
   private
+
     def set_article
       @article = Article.find(params[:article_id])
     end

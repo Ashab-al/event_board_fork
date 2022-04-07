@@ -1,7 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_article, only: [:show, :like]
-  before_action :set_current_user_article, only: [:edit, :update, :destroy]
+  before_action :set_article, except: [:index, :new, :create]
 
   def index
     @articles = Article.all
@@ -14,19 +13,20 @@ class ArticlesController < ApplicationController
   end 
 
   def new 
-    if user_can_create_article?
-      @article = current_user.articles.build
-      @events = current_user.subscriptions.map(&:event) + current_user.events
-    else
-      redirect_to articles_url, alert: 'U can`t create article!' 
-    end
+    @article = current_user.articles.build
+    authorize @article
+
+    @events = current_user.subscriptions.map(&:event) + current_user.events
   end
 
   def edit
+    authorize @article
   end
 
   def create
     @article = current_user.articles.build(article_params)
+    authorize @article
+
     @events = current_user.subscriptions.map(&:event) + current_user.events
     
     if @article.save
@@ -69,16 +69,9 @@ class ArticlesController < ApplicationController
   end
 
   private
+
     def set_article
       @article = Article.find(params[:id])
-    end
-
-    def set_current_user_article
-      begin
-        @article = current_user.articles.find(params[:id])
-      rescue ActiveRecord::RecordNotFound
-        redirect_to user_path(current_user), notice: I18n.t('controllers.articles.cant_change')
-      end
     end
 
     def article_params

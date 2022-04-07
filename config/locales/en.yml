@@ -90,6 +90,7 @@ en:
     comments:
       created: 'Comment was successfully created.'
       destroyed: 'Comment was successfully destroyed.'
+      destroyed_all: 'Comments was successfully destroyed.'
       error: 'Error with comment'
     subscriptions:
       created: 'Subscription successfully created'
