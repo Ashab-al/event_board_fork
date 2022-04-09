@@ -17,7 +17,21 @@ class EventPolicy < ApplicationPolicy
     update?
   end
 
+  def add_pictures?
+    is_member?
+  end
+
+  def gallery?
+    is_member?
+  end
+
   def can_leave?
     @record.subscribers.include?(@user)
   end
+
+  private
+
+    def is_member?
+      @record.subscribers.include?(@user) || @record.user == @user
+    end
 end

@@ -17,7 +17,9 @@ Rails.application.routes.draw do
 
   resources :events do 
     resources :subscriptions, only: [:create, :destroy]
+    get :gallery
     post :show, on: :member
+    post 'add_pictures'
   end
 
   resources :users, only: [:index, :show, :update, :edit]

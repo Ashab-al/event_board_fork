@@ -7,7 +7,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @user = @article.user @event = @article.event
+    @user = @article.user
+    @event = @article.event
     @comments = @article.comments
   end 
 

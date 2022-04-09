@@ -5,7 +5,6 @@
 <figure class="visible">
 
         <div class="">
-
           <div class="pt-5 px-2 sm:px-6">
             <span
               class="inline-flex items-center py-1 px-2 rounded-full bg-green-600 text-white  text-xs font-bold tracking-widest mb-2">
@@ -72,6 +71,27 @@
     </div>
   </div>
 </section>
+
+<section class="mt-4 overflow-hidden text-gray-700 ">
+    <div class="flex flex-wrap -m-1 md:-m-2">
+      <% @pictures.each do |picture| %>
+        <div class="flex flex-wrap md:w-1/2 lg:w-1/4">
+          <div class="w-full p-1 md:p-2">
+            <%= image_tag picture, class: 'block object-cover object-center w-full h-full rounded-lg' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%= link_to 'Show more', event_gallery_path(@event), class: 'block w-40 mx-auto transition cursor-pointer duration-300 text-center mt-2 bg-indigo-500 hover:bg-indigo-400 text-white font-bold py-2 px-4 border-b-4 border-indigo-700 hover:border-indigo-500 rounded' %>
+</section>
+
+<section class="w-full">
+  <%= render partial: 'pictures_form', locals: {event: @event} %>
+</section>
+
+<div class="container flex flex-wrap mx-auto">
+</div>
+
 
 <section class="w-full">
   <h2 class="text-3xl text-center font-bold"><%= t('event.subscribers_title') %></h2>

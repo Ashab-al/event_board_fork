@@ -1,16 +1,16 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]  
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :add_pictures]  
   before_action :set_event, except: [:index, :new, :create]
   before_action :password_guard!, only: [:show]
 
-  def index
+  def index 
     @events = Event.all
   end
 
   def show
     @user = @event.user
-    @new_subscription = @event.subscriptions.build(params[:subscription]) 
-  end
+    @pictures = @event.pictures.sample(4)
+    @new_subscription = @event.subscriptions.build(params[:subscription]) end
 
   def new
     @event = current_user.events.build
@@ -46,6 +46,24 @@ class EventsController < ApplicationController
     redirect_to events_url, notice: I18n.t('controllers.events.destroyed')
   end
 
+  def add_pictures
+    authorize @event
+
+    if params[:post][:pictures].present?
+      params[:post][:pictures].each { |picture| @event.pictures.attach(picture) }
+      redirect_to @event, notice: I18n.t('controllers.events.updated')
+    else
+      redirect_to @event, notice: I18n.t('controllers.events.error')
+    end
+
+  end
+
+  def gallery
+    authorize @event
+
+    @pictures = @event.pictures
+  end
+
   private
 
     def password_guard! 
@@ -63,7 +81,7 @@ class EventsController < ApplicationController
     end
 
     def set_event
-      @event = Event.find(params[:id])
+      @event = Event.find(params[:id] || params[:event_id])
     end
     
     def event_params
