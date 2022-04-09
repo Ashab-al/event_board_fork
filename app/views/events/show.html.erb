@@ -51,7 +51,7 @@
             <% else %>
               <div class="">
                 <%= link_to t('event.index_events_button'), events_path, class: 'transition cursor-pointer duration-300 text-center mt-4 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded' %>
-                <% if policy(@new_subscription).can_join? %>
+                <% if @event.datetime > DateTime.now && policy(@new_subscription).can_join? %>
                   <%= render partial: 'subscriptions/form', locals: {subscription: @new_subscription || @event.subscriptions.build } %>
                 <% elsif policy(@event).can_leave? %>
                   <%= link_to "Leave event", event_subscription_path(@event), class: "text-sm cursor-pointer transition duration-300 text-center mt-4 bg-yellow-500 

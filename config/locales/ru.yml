@@ -104,6 +104,7 @@ ru:
         user_dont_have_events: 'У пользователя нет событий о которых он может писать'
         user_own_event: 'Владелец не может быть подписан на своё событие'
         email_already_exist: 'Такой email уже подписан на это событие'
+        event_time_is_up: 'Событие закончилось, уже нельзя подписаться'
   errors:
     not_authorized: 'У вас нет прав на это действие'
     format: "%{attribute} %{message}"

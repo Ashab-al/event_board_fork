@@ -12,6 +12,7 @@ class Subscription < ApplicationRecord
 
   validate :user_email_present, unless: Proc.new { user.present? }
   validate :user_own_event
+  validate :event_time_is_up
 
   def user_name
     if user.present?
@@ -40,6 +41,12 @@ class Subscription < ApplicationRecord
     def user_email_present
       if User.where(email: user_email.downcase).present?
         errors.add(:user_email, I18n.t("activerecord.models.errors.email_already_exist"))
+      end
+    end
+
+    def event_time_is_up
+      if event.datetime < DateTime.now
+        errors.add(:user_email, I18n.t("activerecord.models.errors.event_time_is_up"))
       end
     end
 end

@@ -78,6 +78,7 @@ en:
         user_dont_have_events: 'The user has no events to write about'
         user_own_event: 'Owner can`t join'
         email_already_exist: 'Email already exist on this event'
+        event_time_is_up: 'Event time is up :('
   errors:
     not_authorized: 'You are not authorized to perform this action.'
   controllers:
