@@ -33,7 +33,7 @@ ru:
     index_events_button: 'Назад к событиям'
     edit_save_button: 'Сохранить изменения'
     new_page_title: 'Создание события'
-    only_for_authorized_users: 'только для зарегестрированных' 
+    private: 'приватно' 
     subscribers_title: 'Подписчики'
   article:
     edit_button: 'Редактировать статью'

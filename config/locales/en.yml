@@ -33,7 +33,7 @@ en:
     index_events_button: 'Back to events'
     edit_save_button: 'Save changes'
     new_page_title: 'New event'
-    only_for_authorized_users: 'only for authorized users' 
+    private: 'private'
     subscribers_title: 'Subscribers'
   article:
     edit_button: 'Edit this article'
