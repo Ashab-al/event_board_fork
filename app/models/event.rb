@@ -9,4 +9,8 @@ class Event < ApplicationRecord
   
   validates :title, length: { maximum: 255 }
   validates :description, length: { minimum: 50, maximum: 500 } 
+
+  def pincode_valid?(pin2check)
+    pincode == pin2check
+  end
 end

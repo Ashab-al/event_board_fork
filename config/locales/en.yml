@@ -2,7 +2,8 @@ en:
   title: 'Event board'
   confirm: 'Are you sure?'
   notice:
-    success: 'Success' error: 'Ошибка!'
+    success: 'Success'
+    error: 'Ошибка!'
   navbar:
     articles: 'Articles'
     events: 'Events'
@@ -85,6 +86,7 @@ en:
       updated: 'Event was successfully updated.'
       destroyed: 'Event was successfully destroyed.'
       cant_change: 'You can`t change this event'
+      wrong_pincode: 'Pincode not correct'
     articles:
       created: 'Article was successfully created.'
       updated: 'Article was successfully updated.'
