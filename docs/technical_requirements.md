@@ -77,6 +77,7 @@ A closed event or one open to all users is determined by the presence of a pinco
 The PIN code does not imply validation for the complexity of the PIN code.
 If there is a PIN code, the event is supposed to have access to viewing the event through the PIN code form.
 If the PIN code is entered correctly, the data is recorded in cookies.
+Subscribers and the Author can add photos of the event to the gallery (no more than 3).
 
 ## 2.6 Functionality of the author of article events
 
