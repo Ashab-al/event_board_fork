@@ -20,7 +20,11 @@ The system consists of the following main functional blocks:
 
 [Technical Requirements](./docs/technical_requirements.md)
 
-# 3 Proposed technology stack:
+# 3. Schema
+
+![schema](https://i.imgur.com/lJvPSmA.png)
+
+# 4 Proposed technology stack:
 
 * Bakcend:
   - Ruby 2.7.2
@@ -36,7 +40,7 @@ The system consists of the following main functional blocks:
   - native javascript
   - tailwindcss
 
-# 4 Installation
+# 5 Installation
 
 ### System dependencies
 
