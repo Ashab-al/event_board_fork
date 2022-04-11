@@ -57,6 +57,7 @@ On the profile page, the user can edit their data:
 The functionality of changing the password on the profile page is assumed.
 Each authrized user can create events, leave comments on articles,
 subscribe to all open and closed events, if he has a pincode.
+Registered users can like articles.
 
 When a user is deleted, all his events and articles are deleted (delete functionality has admin only).
 
@@ -89,6 +90,7 @@ The author of the article cannot write an article
 if he is not subscribed to any event or is not the owner of any event created in the application.
 If the artilce event picture is not set, then the standard picture that was conceived in the application design is taken.
 Any type of user can comment on the article.
+The article has varnishes that registered users can leave.
 
 ## 2.7 Subscriber functionality
 
